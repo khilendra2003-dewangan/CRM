@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, LogIn, LogOut, Menu } from "lucide-react";
+import { GraduationCap, LogIn, LogOut } from "lucide-react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -41,7 +41,7 @@ export default function Navbar() {
               {(user.role === "Admin" || user.role === "Officer" || user.role === "Management") && (
                 <Link
                   to={user.role === "Admin" ? "/admin" : user.role === "Officer" ? "/officer" : "/management"}
-                  className="hidden md:flex items-center space-x-2 text-sm font-semibold text-white transition-colors bg-slate-900 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-800"
+                  className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-semibold text-white transition-colors bg-slate-900 px-3 py-2 sm:px-4 sm:py-2 rounded-lg shadow-sm hover:bg-slate-800 whitespace-nowrap"
                 >
                   <span>Dashboard</span>
                 </Link>
@@ -51,7 +51,7 @@ export default function Navbar() {
               </span>
               <button
                 onClick={handleLogout}
-                className="hidden sm:flex items-center space-x-2 text-sm font-semibold text-red-600 hover:text-red-800 transition-colors"
+                className="flex items-center space-x-2 text-sm font-semibold text-red-600 hover:text-red-800 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Logout</span>
@@ -59,19 +59,12 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login" className="hidden sm:flex items-center space-x-2 text-sm font-semibold text-[#1e3a8a] hover:text-[#0f172a] transition-colors">
-                <LogIn className="w-4 h-4" />
+              <Link to="/login" className="flex items-center space-x-1 sm:space-x-2 bg-[#1e3a8a] hover:bg-[#172554] text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap">
+                <LogIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Login to Portal</span>
               </Link>
-              <button className="bg-[#1e3a8a] hover:bg-[#172554] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-md hover:shadow-lg active:scale-95">
-                Apply Now
-              </button>
             </>
           )}
-
-          <button className="md:hidden text-[#475569]">
-            <Menu className="w-6 h-6" />
-          </button>
         </div>
       </div>
     </motion.nav>
